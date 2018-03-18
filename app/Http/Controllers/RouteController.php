@@ -81,7 +81,7 @@ class RouteController extends Controller
                     return response()->json(array("status"=>$route_obj->statusLabel()));
                 }
 
-                return response()->json(array("status"=>$route_obj->statusLabel(), "error"=>$route_obj->error));                
+                return response()->json(array("status"=>$route_obj->statusLabel(), "error"=>$route_obj->error), 400);                
             }
 
         }
