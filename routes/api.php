@@ -20,4 +20,4 @@ use Illuminate\Http\Request;
 
 
 Route::post('route', 'RouteController@index');
-Route::get('route/{token}', 'RouteController@show');
+Route::get('route/{route}', 'RouteController@show');

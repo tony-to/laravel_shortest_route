@@ -24,12 +24,7 @@ class RouteController extends Controller
         }
 
     	//Create a route with pending status
-		$route = new Route();
-
-		//Generate token and associate with route
-        $generated_token = (new TokenFactory())->Unique("tokens", "token", 32 );
-        $token_obj = Token::create(['token'=>$generated_token]);
-        $route->token()->associate($token_obj)->save();
+		$route = Route::Create();
 
         //Save the start point from request
         $route->start()->save(new RouteStart(["latitube"=>$inputs[0][0], "longitube"=>$inputs[0][1]]));
@@ -44,49 +39,35 @@ class RouteController extends Controller
         //Add Call API to queue
 		CalcDistanceMatrix::dispatch($route);
 
-        //Format the token
-        $generated_token = $this->format_token($generated_token);
 
-        return response()->json(array("token" =>$generated_token));
+        return response()->json(array("token" =>$route->id));
     }
 
 
-    public function show($token)
+    public function show(Route $route)
     {
-        //Check token exist
-        $token = str_replace("-", "", $token);
-        if($token_obj = Token::where('token', $token)->first()){
-            $token_id = $token_obj->id;
-            //Get route by token
-            if($route_obj = Route::where('token_id', $token_id)->first()){
+        //handle the return json
+        if($route->status == Route::SUCCESS){
+            $start = $route->start;
+            $return_path = array(array($start->latitube, $start->longitube));
 
-                //handle the return json
-                if($route_obj->status == Route::SUCCESS){
-                    $start = $route_obj->start;
-                    $return_path = array(array($start->latitube, $start->longitube));
-
-                    foreach ($route_obj->dropoffs as $dropoff) {
-                        $return_path[] = array($dropoff->latitube, $dropoff->longitube);
-                    }
-
-                    //Temp class for return json
-                    $return_route = new \stdClass();
-                    $return_route->status = $route_obj->statusLabel();
-                    $return_route->paths = $return_path;
-                    $return_route->total_time = $route_obj->total_time;
-                    $return_route->total_distance = $route_obj->total_distance;
-
-                    return response()->json($return_route);
-                }else if($route_obj->status == Route::IN_PROGRESS){
-                    return response()->json(array("status"=>$route_obj->statusLabel()));
-                }
-
-                return response()->json(array("status"=>$route_obj->statusLabel(), "error"=>$route_obj->error), 400);                
+            foreach ($route->dropoffs as $dropoff) {
+                $return_path[] = array($dropoff->latitube, $dropoff->longitube);
             }
 
-        }
-        return response()->json(['status'=>'not found'], 404);
+            //Temp class for return json
+            $return_route = new \stdClass();
+            $return_route->status = $route->statusLabel();
+            $return_route->paths = $return_path;
+            $return_route->total_time = $route->total_time;
+            $return_route->total_distance = $route->total_distance;
 
+            return response()->json($return_route);
+        }else if($route->status == Route::IN_PROGRESS){
+            return response()->json(array("status"=>$route->statusLabel()));
+        }
+
+        return response()->json(array("status"=>$route->statusLabel(), "error"=>$route->error), 400);                
     }
 
     public function input_validation($inputs){
@@ -102,17 +83,4 @@ class RouteController extends Controller
         return true;
     }
 
-    public function format_token($token){
-        //format: 12345678-1234-1234-1234-123456789012
-        //e.g.  : 9d3503e0-7236-4e47-a62f-8b01b5646c16
-
-        $positions = array(8, 12, 16, 20);
-        $count = 0;
-        foreach ($positions as $postion) {
-            $token = substr_replace($token, "-", $postion+$count, 0);
-            $count++;
-        }
-
-        return $token;
-    }
 }

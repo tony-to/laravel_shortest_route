@@ -15,7 +15,7 @@ class CreateRouteDropoffsTable extends Migration
     {
         Schema::create('route_dropoffs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('route_id')->unsigned();
+            $table->uuid('route_id');
             $table->foreign('route_id')
                 ->references('id')->on('routes')
                 ->onDelete('cascade');

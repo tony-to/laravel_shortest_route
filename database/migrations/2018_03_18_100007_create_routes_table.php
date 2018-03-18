@@ -14,11 +14,9 @@ class CreateRoutesTable extends Migration
     public function up()
     {
         Schema::create('routes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('token_id')->unsigned();
-            $table->foreign('token_id')
-                ->references('id')->on('tokens')
-                ->onDelete('cascade');
+            // $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
             $table->integer('total_distance')->nullable();
             $table->integer('total_time')->nullable();
             $table->longText('error')->nullable();

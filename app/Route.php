@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Uuid;
 
 class Route extends Model
 {
@@ -12,6 +13,14 @@ class Route extends Model
     const FAILURE = 2;
 
     protected $fillable = ['total_distance', 'total_time','error','status'];
+
+	/**
+	 * Indicates if the IDs are auto-incrementing.
+	 *
+	 * @var bool
+	 */
+	public $incrementing = false;
+
 
     /**
      * Return list of status codes and labels
@@ -52,8 +61,15 @@ class Route extends Model
         return $this->hasMany('App\RouteDropoff', 'route_id')->orderBy('step');
     }
 
-    public function token() {
-    	return $this->belongsTo('App\Token', 'token_id');
-	}
+    /**
+     * Boot function from laravel.
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = Uuid::generate()->string;
+        });
+    }
 }
