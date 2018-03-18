@@ -4,8 +4,171 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "content-hash": "a5beb1f6a13414de82179280c8d8fb6f",
     "packages": [
+        {
+            "name": "alexpechkarev/geometry-library",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexpechkarev/geometry-library.git",
+                "reference": "ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexpechkarev/geometry-library/zipball/ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414",
+                "reference": "ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeometryLibrary\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pechkarev",
+                    "email": "alexpechkarev@gmail.com"
+                }
+            ],
+            "description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
+            "homepage": "https://alexpechkarev.github.io/geometry-library/",
+            "keywords": [
+                "computations polygons and polylines",
+                "encoding and decoding polyline paths utilities",
+                "google maps geometry library",
+                "php geometry library",
+                "spherical geometry utilities"
+            ],
+            "time": "2015-09-11T15:40:41+00:00"
+        },
+        {
+            "name": "alexpechkarev/google-maps",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexpechkarev/google-maps.git",
+                "reference": "fa6b843e2c89263f233c1ebaaa6603cbb7aed966"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexpechkarev/google-maps/zipball/fa6b843e2c89263f233c1ebaaa6603cbb7aed966",
+                "reference": "fa6b843e2c89263f233c1ebaaa6603cbb7aed966",
+                "shasum": ""
+            },
+            "require": {
+                "alexpechkarev/geometry-library": "1.0.0",
+                "illuminate/support": "5.*",
+                "jbroadway/urlify": "^1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GoogleMaps\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pechkarev",
+                    "email": "alexpechkarev@gmail.com"
+                }
+            ],
+            "description": "Collection of Google Maps API Web Services for Laravel",
+            "homepage": "https://alexpechkarev.github.io/google-maps/",
+            "keywords": [
+                "Google Maps API",
+                "directions api",
+                "distance matrix api",
+                "elevation api",
+                "geocoding api",
+                "geolocation api",
+                "google maps api for laravel",
+                "google maps web service for laravel",
+                "laravel google maps api",
+                "places api web service",
+                "roads api",
+                "time zone api"
+            ],
+            "time": "2018-01-09T18:23:57+00:00"
+        },
+        {
+            "name": "dirape/token",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dirape/laravel-token.git",
+                "reference": "31282afa4614783314935985f9270e458762bf83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dirape/laravel-token/zipball/31282afa4614783314935985f9270e458762bf83",
+                "reference": "31282afa4614783314935985f9270e458762bf83",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0 || ~4.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dirape\\Token\\TokenServiceProvider"
+                    ],
+                    "aliases": {
+                        "Token": "Dirape\\Token\\Facades\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dirape\\Token\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MustafaKhaled",
+                    "email": "MustafaKhaled.dev@gmail.com"
+                }
+            ],
+            "description": "Unique Token Generator For Laravel",
+            "keywords": [
+                "PHP token",
+                "generate",
+                "laravel",
+                "laravel token",
+                "token",
+                "token generator",
+                "unique token"
+            ],
+            "time": "2017-08-20T14:37:27+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -238,6 +401,60 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jbroadway/urlify",
+            "version": "1.1.0-stable",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jbroadway/urlify.git",
+                "reference": "99bb78cd9002d0e9ce479bb81635eb665e37e981"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jbroadway/urlify/zipball/99bb78cd9002d0e9ce479bb81635eb665e37e981",
+                "reference": "99bb78cd9002d0e9ce479bb81635eb665e37e981",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "URLify": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Johnny Broadway",
+                    "email": "johnny@johnnybroadway.com",
+                    "homepage": "http://www.johnnybroadway.com/"
+                }
+            ],
+            "description": "PHP port of URLify.js from the Django project. Transliterates non-ascii characters for use in URLs.",
+            "homepage": "https://github.com/jbroadway/urlify",
+            "keywords": [
+                "encode",
+                "iconv",
+                "link",
+                "slug",
+                "translit",
+                "transliterate",
+                "transliteration",
+                "url",
+                "urlify"
+            ],
+            "time": "2017-01-03T20:12:54+00:00"
         },
         {
             "name": "laravel/framework",
