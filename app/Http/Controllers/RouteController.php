@@ -42,7 +42,7 @@ class RouteController extends Controller
 		$route->dropoffs()->saveMany($dropoffs);
 
         //Add Call API to queue
-		// CalcDistanceMatrix::dispatch($route);
+		CalcDistanceMatrix::dispatch($route);
 
         //Format the token
         $generated_token = $this->format_token($generated_token);
