@@ -4,8 +4,8 @@
 ## Required packages:
 
 Required packages:
-Laravel UUID (https://github.com/webpatser/laravel-uuid)
-Google Map API for Laravel (https://github.com/alexpechkarev/google-maps)
+1. Laravel UUID (https://github.com/webpatser/laravel-uuid)
+2. Google Map API for Laravel (https://github.com/alexpechkarev/google-maps)
 
 ## Documentation
 
