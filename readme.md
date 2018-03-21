@@ -16,6 +16,8 @@ Required packages:
 3. Use Docker container to create the environment and create required table by following command
 
 ```bash
+$ sudo chmod 0777 storage
+$ sudo chmod 0777 bootstrap/cache
 $ sudo docker-compose up --build
 $ sudo docker-compose exec app php artisan migrate
 ```
