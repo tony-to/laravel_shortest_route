@@ -49,10 +49,10 @@ class RouteController extends Controller
         //handle the return json
         if($route->status == Route::SUCCESS){
             $start = $route->start;
-            $return_path = array(array($start->latitube, $start->longitube));
+            $return_path = array(array("$start->latitube", "$start->longitube"));
 
             foreach ($route->dropoffs as $dropoff) {
-                $return_path[] = array($dropoff->latitube, $dropoff->longitube);
+                $return_path[] = array("$dropoff->latitube", "$dropoff->longitube");
             }
 
             //Temp class for return json
