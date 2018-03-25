@@ -31,12 +31,6 @@ COPY . $APP_HOME
 
 RUN composer install --no-interaction -d=/var/www
 
-RUN chown -R www-data:www-data /var/www/storage
-
-RUN chown -R www-data:www-data /var/www/bootstrap/cache
-
-RUN chmod -R 0777 /var/www/storage
-
-RUN chmod -R 0777 /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/
 
 RUN php /var/www/artisan optimize
